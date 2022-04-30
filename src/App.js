@@ -126,10 +126,10 @@ function Home() {
     <div>
       <h2>Welcome to the homepage!</h2>
       <div>
-            <Link to="/debits">Debits</Link>
+        <Link to="/debits">Debits</Link>
       </div>
       <div>
-            <Link to="/credits">Credits</Link>
+        <Link to="/credits">Credits</Link>
       </div>
     </div>
   );
