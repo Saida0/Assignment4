@@ -34,7 +34,9 @@ class App extends React.Component {
       creditSum += credit.amount;
     });
 
+    //let accountBalance = Math.round(((creditSum - debitSum)*100)/100).toFixed(2);
     let accountBalance = creditSum - debitSum;
+    accountBalance = Math.round(accountBalance * 100) / 100;
     this.setState({ debits, credits, accountBalance });
   }
 
@@ -85,7 +87,8 @@ class App extends React.Component {
       today.getDate().toString();
 
     const newCredit = { description, amount, date };
-    balance = balance - amount;
+    //balance = Math.round(((balance + amount)*100)/100).toFixed(2);
+    balance = balance + amount;
     credits = [...credits, newCredit];
     this.setState({ credits: credits, accountBalance: balance });
   };
@@ -122,8 +125,12 @@ function Home() {
   return (
     <div>
       <h2>Welcome to the homepage!</h2>
-      <Link to="/debits">Debits</Link>
-      <Link to="/credits">Credits</Link>
+      <div>
+            <Link to="/debits">Debits</Link>
+      </div>
+      <div>
+            <Link to="/credits">Credits</Link>
+      </div>
     </div>
   );
 }
