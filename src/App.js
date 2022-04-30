@@ -93,7 +93,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to React Router!</h1>
+        <h1>Welcome to Bank of React!</h1>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
