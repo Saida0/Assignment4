@@ -33,10 +33,8 @@ class App extends React.Component {
     credits.forEach((credit) => {
       creditSum += credit.amount;
     });
-
-    //let accountBalance = Math.round(((creditSum - debitSum)*100)/100).toFixed(2);
-    let accountBalance = creditSum - debitSum;
-    accountBalance = Math.round(accountBalance * 100) / 100;
+    let accountBalance = creditSum.toFixed(2) - debitSum.toFixed(2);
+    accountBalance = accountBalance.toFixed(2)
     this.setState({ debits, credits, accountBalance });
   }
 
@@ -61,8 +59,7 @@ class App extends React.Component {
       today.getDate().toString();
 
     const newDebit = { description, amount, date };
-    balance = balance.toFixed(2) - amount;
-    //balance = Math.round(((balance - amount)*100)/100).toFixed(2);
+    balance = parseFloat(balance) - amount;// parseFloat() is used to convert balance from string to float
     debits = [...debits, newDebit];
     this.setState({ debits: debits, accountBalance: balance });
   };
@@ -88,8 +85,7 @@ class App extends React.Component {
       today.getDate().toString();
 
     const newCredit = { description, amount, date };
-    //balance = Math.round(((balance + amount)*100)/100).toFixed(2);
-    balance = balance.toFixed(2) + amount;
+    balance = parseFloat(balance) + amount; // parseFloat() is used to convert balance from string to float
     credits = [...credits, newCredit];
     this.setState({ credits: credits, accountBalance: balance });
   };
